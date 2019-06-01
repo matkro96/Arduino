@@ -3,7 +3,6 @@
 #include <Stepper.h> // Include the header file
 const int trigPin = 2;
 const int echoPin = 3;
-// defines variables
 long duration;
 int distance;
 
@@ -48,7 +47,7 @@ if(distance>8)
         stepper.step(2);}
 
 
-  
- 
+
+
 
 }
