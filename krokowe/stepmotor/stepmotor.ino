@@ -25,12 +25,12 @@ void setup(){
   stepper1.setMaxSpeed(800.0);
   stepper1.setAcceleration(400.0);
   stepper1.setSpeed(100);
-  stepper1.moveTo(20480000);
+  stepper1.moveTo(-20480000);
 
   stepper2.setMaxSpeed(800.0);
   stepper2.setAcceleration(400.0);
   stepper2.setSpeed(100);
-  stepper2.moveTo(-20480000);
+  stepper2.moveTo(20480000);
 
 
 Serial.begin(9600); // Starts the serial communication
@@ -55,13 +55,13 @@ if(digitalRead(3)==HIGH)
 {
  
 
-// stepper1.stop();
- //stepper2.stop();
- delay(7000);
+ stepper1.stop();
+ stepper2.stop();
+ delay(2000);
 resetFunc();
 }
-else
+else{
 stepper1.run();
 stepper2.run();
 }
-
+}

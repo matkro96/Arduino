@@ -1,28 +1,24 @@
 // Arduino stepper motor control code
 
 #include <Stepper.h> // Include the header file
-const int trigPin = 2;
-const int echoPin = 3;
+const int trigPin = 3;
+const int echoPin = 2;
 long duration;
 int distance;
 
 
 
 // change this to the number of steps on your motor
-#define STEPS 32
 
-// create an instance of the stepper class using the steps and pins
-Stepper stepper(STEPS, 8, 10, 9, 11);
- Stepper stepper1(STEPS, 4, 6, 5, 7);
 
-int val =2048;
+
 
 void setup() {
   Serial.begin(9600);
-stepper.setSpeed(300);
-stepper1.setSpeed(300);
+
 pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output
 pinMode(echoPin, INPUT); // Sets the echoPin as an Input
+pinMode(4, OUTPUT);
 Serial.begin(9600); // Starts the serial communication
 }
 
@@ -41,13 +37,13 @@ distance= duration*0.034/2;
 // Prints the distance on the Serial Monitor
 Serial.print("Distance: ");
 Serial.println(distance);
-if(distance>8)
+if(distance<8)
 {
-    stepper1.step(2);
-        stepper.step(-2);}
+  digitalWrite(4,HIGH);
+  delay(100);
+}
 
-
-
-
+else 
+digitalWrite(4, LOW);
 
 }
